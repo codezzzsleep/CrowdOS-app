@@ -1,17 +1,82 @@
 {
 	"pages": [{
-		"path": "pages/index/index",
-		"style": {
-			"navigationBarTitleText": "uni-app"
-		}
-	}],
+            "path" : "pages/tabBar/index/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "首页",
+                "enablePullDownRefresh": true
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/userCenter/userCenter",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人中心",
+                "enablePullDownRefresh": true
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/taskList/taskList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "任务列表",
+                "enablePullDownRefresh": true
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskList/taskList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "任务列表",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/userCenter/userCenter",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人中心",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "千眼",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
 		"app-plus": {
 			"background": "#efeff4"
 		}
-	}
+	},
+	"tabBar": {
+			"color": "#7A7E83",
+			"selectedColor": "#007AFF",
+			"borderStyle": "black",
+			"backgroundColor": "#F8F8F8",
+			"list": [{
+					"pagePath": "pages/tabBar/index/index",
+					"iconPath": "static/index.png",
+					"selectedIconPath": "static/indexHL.png",
+					"text": "首页"
+				},
+				{
+					"pagePath": "pages/tabBar/taskList/taskList",
+					"iconPath": "static/taskList.png",
+					"selectedIconPath": "static/taskListHL.png",
+					"text": "任务列表"
+				}, {
+					"pagePath": "pages/tabBar/userCenter/userCenter",
+					"iconPath": "static/userCenter.png",
+					"selectedIconPath": "static/userCenterHL.png",
+					"text": "个人中心"
+				}
+			]
+		}
+	
 }
