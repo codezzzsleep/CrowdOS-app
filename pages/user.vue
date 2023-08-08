@@ -46,7 +46,9 @@
 				<text class="flex icon3 diygw-col-0 diy-icon-right"></text>
 			</view>
 		</view>
-		
+		<view class="flex diygw-col-24  flex6-clz">
+			<button type="warn" @click="userLogout">退出登录</button>
+		</view>
 		<view class="clearfix"></view>
 	</view>
 </template>
@@ -77,7 +79,17 @@
 			this.init();
 		},
 		methods: {
-			async init() {}
+			async init() {},
+			userLogout(){
+				uni.removeStorageSync('currentUser');
+				uni.showToast({
+				  title: "退出成功",
+				  icon: 'success', // 图标，可选值：'success', 'loading', 'none'
+				});
+				uni.reLaunch({
+				  url: '/pages/page/login/login' // 要跳转的页面路径
+				});
+			}
 		}
 	};
 </script>

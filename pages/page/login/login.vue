@@ -20,7 +20,7 @@
 			<view class="flex diygw-col-24 justify-between flex-nowrap flex1-clz">
 				<view class="flex flex-wrap diygw-col-0" @tap="navigateTo" data-type="page" data-url="/pages/null" data-redirect="1">
 					<view class="diygw-col-0"> 还没有账号？ </view>
-					<view @tap="navigateTo" data-type="page" data-url="/pages//page/login/register" class="diygw-col-0 text2-clz"> 注册 </view>
+					<view @tap="navigateTo" data-type="page" data-url="/pages/page/login/register" class="diygw-col-0 text2-clz"> 注册 </view>
 				</view>
 			</view>
 			<view @click="submitForm" class="diygw-col-24 gradual-green text4-clz"> 登录 </view>
@@ -95,13 +95,8 @@
 
 			async submitForm(e) {
 				let valid = await this.$refs.formRef.validate();
-				console.log("submit")
-				if (valid) {
-					//保存数据
-					let param = this.form;
-					let header = {};
-					let url = 'user/login';
 
+				if (valid) {	
 					uni.request({
 						url: `https://crowd.zzzsleep.icu/api/user/login`,
 						method: 'POST',
@@ -113,13 +108,7 @@
 					    'content-type': 'application/json' // 根据实际需求设置请求头
 					  },
 					  success: function(res) {
-						  console.log(res)
-						  uni.showToast({
-						    title: res.errMsg,
-						    icon: 'none', // 图标，可选值：'success', 'loading', 'none'
-						  });
 					    if(res.data.code == 0){
-							console.log(res.data.data)
 							let user = res.data.data
 							uni.setStorageSync('currentUser', user);
 							uni.showToast({

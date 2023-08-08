@@ -1,7 +1,7 @@
 <script>
 	export default {
 		onLaunch(options) {
-		    const isLogged = uni.getStorageSync('isLogged'); // 从本地存储中获取登录状态
+		    const isLogged = uni.getStorageSync('currentUser'); // 从本地存储中获取登录状态
 		    if (!isLogged) {
 		      // 用户未登录，跳转到登录页
 		      uni.reLaunch({

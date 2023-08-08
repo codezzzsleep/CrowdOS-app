@@ -38,8 +38,7 @@
 				userInfo: {},
 				//页面传参
 				globalOption: {},
-				//自定义全局变量
-				globalData: { logintype: '0', agree: '0' },
+				
 				formRules: {
 					userAccount: [
 						{
@@ -95,58 +94,7 @@
 			async init() {
 				await this.initResetform();
 			},
-			// 同意或不同意 自定义方法
-			async agreeFunction(param) {
-				let thiz = this;
-				//如果不同意，改为同意
-				this.globalData.agree = this.globalData.agree == '1' ? '0' : '1';
-			},
-
-			// 验证码登录或密码登录 自定义方法
-			async codeFunction(param) {
-				let thiz = this;
-				//如果1表示验证码登录，0表进密码登录
-				this.globalData.logintype = this.globalData.logintype == '1' ? '0' : '1';
-			},
-
-			// 发送短信验证码 自定义方法
-			async sendMsgFunction(param) {
-				let thiz = this;
-				this.formData.codeFlag = false;
-				if (!this.form.phone) {
-					this.showToast('手机号码不能为空');
-					//不给发送验证码
-					this.formData.codeFlag = false;
-					return;
-				}
-				let pattern = /^1[3-9]\d{9}$/;
-				if (!pattern.test(this.form.phone)) {
-					this.showToast('手机号码输入有误');
-					//不给发送验证码
-					this.formData.codeFlag = false;
-					return;
-				}
-				let http_url = '';
-				//配置后可删除下面的判断
-				if (!http_url) {
-					this.showToast('默认发送短信验证地址，配置后可删除此判断');
-					return;
-				}
-				let http_data = {
-					phone: this.form.phone
-				};
-				let http_header = {};
-				let data = await this.$http.post(http_url, http_data, http_header, 'json');
-				if (data.code == 0) {
-					this.showToast(data.msg);
-					return;
-				} else {
-					//修改为true
-					this.formData.codeFlag = true;
-					this.$refs.codeCodeRef.start();
-					this.showToast('验证码已发送');
-				}
-			},
+			
 			initResetform() {
 				this.initform = JSON.stringify(this.form);
 			},
@@ -156,36 +104,47 @@
 
 			async submitForm(e) {
 				let valid = await this.$refs.formRef.validate();
-
 				if (valid) {
-					//保存数据
-					let param = this.form;
-					let header = {};
-					let url = '/apps/login/login';
-
-					if (this.globalData.agree != '1') {
-						this.showToast('请点击同意授权协议');
-						return;
-					}
-					param.logintype = this.globalData.logintype;
-					let res = await this.$http.post(url, param, header, 'json');
-					if (res.code == 200) {
-						this.$session.setUser(res.data);
-						this.showToast(res.msg, 'success');
-						this.navigateTo({
-							type: 'page',
-							url: 'index'
-						});
-					} else {
-						this.showToast(res.msg, 'error');
-					}
-					if (res.code == 200) {
-						this.showToast(res.msg, 'success');
-					} else {
-						this.showModal(res.msg, '提示', false);
-					}
+					uni.request({
+						url: `https://crowd.zzzsleep.icu/api/user/register`,
+						method: 'POST',
+					  data: {
+					    userAccount:this.form.userAccount,
+					    userPassword: this.form.userPassword,
+						checkPassword:this.form.checkPassword
+					  },
+					  header: {
+					    'content-type': 'application/json' // 根据实际需求设置请求头
+					  },
+					  success: function(res) {
+					    if(res.data.code == 0){
+							uni.showToast({
+							  title: "注册成功",
+							  icon: 'success', // 图标，可选值：'success', 'loading', 'none'
+							});
+							uni.reLaunch({
+							  url: '/pages/page/login/login' // 要跳转的页面路径
+							});
+						}else{
+							uni.showToast({
+							  title: res.data.message,
+							  icon: 'none', // 图标，可选值：'success', 'loading', 'none'
+							});
+							
+						}
+					  },
+					  fail: function(err) {
+					    uni.showToast({
+					      title: err.errMsg,
+					      icon: 'none', // 图标，可选值：'success', 'loading', 'none'
+					    });
+					  }
+					});
 				} else {
-					console.log('验证失败');
+					uni.showToast({
+					  title: "数据格式错误",
+					  icon: 'none', // 图标，可选值：'success', 'loading', 'none'
+					});
 				}
 			}
 		}
