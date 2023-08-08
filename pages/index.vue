@@ -32,28 +32,25 @@
 			</view>
 		</view>
 		<view class="flex flex-wrap diygw-col-24 flex5-clz">
-			<view class="flex flex-wrap diygw-col-0 flex-direction-column justify-end flex7-clz">
+			<view class="flex flex-wrap diygw-col-0 flex-direction-column justify-end flex7-clz" @tap="navigateTo" data-type="page" data-url="/pages/page/index/traffic">
 				<view class="diygw-col-0"> 人流量查看 </view>
 			</view>
-			<view class="flex flex-wrap diygw-col-0 flex-direction-column justify-end flex1-clz">
+			<view class="flex flex-wrap diygw-col-0 flex-direction-column justify-end flex1-clz" @tap="navigateTo" data-type="page" data-url="/pages/page/index/route">
 				<view class="diygw-col-0"> 路线规划 </view>
 			</view>
 		</view>
 		<view class="flex flex-wrap diygw-col-24 flex-direction-column items-center flex3-clz">
 			<view class="diygw-col-0 text1-clz"> 关于crowd OS </view>
 			<view class="flex flex-wrap diygw-col-24 flex-direction-column">
-				<view class="diygw-col-24 text-clz"> 1、DIY上线时间 </view>
-				<view class="diygw-col-24 text3-clz"> 2021/11/20 新版本Vite可视化设计上线 </view>
-				<view class="diygw-col-24 text4-clz"> 2、上线一键应用平台 </view>
-				<view class="diygw-col-24 text5-clz"> 2018/11/15 上线一键应用平台，支持用户设计应用快速同步至本地服务器。免导出源码 </view>
-				<view class="diygw-col-24 text7-clz"> 3、全新可视化设计上线 </view>
-				<view class="diygw-col-24 text8-clz"> 2021/11/20 对系统进行了一次大的重构，打造设计一次打通设计师+产品经理+技术开发团队必备低代码可视化工具 </view>
+				<view class="diygw-col-24 text-clz"> 1、Crowd OS总体介绍 </view>
+				<view class="diygw-col-24 text3-clz"> 一个面向移动众包和群智感知的系统平台 跨平台 CrowdOS适用于Android、iOS、Wear OS等移动操作系统上。 </view>
+				<view class="diygw-col-24 text4-clz"> 2、支持多传感器 </view>
+				<view class="diygw-col-24 text5-clz"> 它可以调度多个传感器，如重力传感器、方向传感器、陀螺仪传感器、环境光传感器、磁传感器等。 </view>
+				<view class="diygw-col-24 text7-clz"> 3、可扩展性 </view>
+				<view class="diygw-col-24 text8-clz"> 平台采用模块化设计，具有结构简单，操作方便，易于扩展的特点。 </view>
 			</view>
 		</view>
-		<view class="version text-grey flex-direction-column flex diygw-col-24 justify-center align-center">
-			<view> DIY官网代码生成器生成 </view>
-			<view> http://www.diygw.com </view>
-		</view>
+		
 		<view class="clearfix"></view>
 	</view>
 </template>

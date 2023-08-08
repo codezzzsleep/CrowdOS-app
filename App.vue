@@ -1,10 +1,19 @@
 <script>
 	export default {
+		onLaunch(options) {
+		    const isLogged = uni.getStorageSync('isLogged'); // 从本地存储中获取登录状态
+		    if (!isLogged) {
+		      // 用户未登录，跳转到登录页
+		      uni.reLaunch({
+		        url: '/pages/page/login/login'
+		      });
+		    }
+		  },
 		globalData: {
 			userInfo: null,
 			tabBar: ['/pages/index', '/pages/task', '/pages/user'],
 			homePage: '/pages/index',
-			pages: ['/pages/index', '/pages/task', '/pages/user', '/pages/index/disply', '/pages/task/list']
+			pages: ['/pages/index', '/pages/task', '/pages/user', '/pages/traffic', '/pages/route', '/pages/task', '/pages/page/publish', '/pages/page/taskList', '/pages/page/user', '/pages/login', '/pages/register']
 		}
 	};
 </script>

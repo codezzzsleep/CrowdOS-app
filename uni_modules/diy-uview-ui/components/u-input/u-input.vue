@@ -379,6 +379,7 @@ export default {
 			}, 100);
 			// vue 原生的方法 return 出去
 			this.$emit("blur", event.detail.value);
+			this.$emit("update:modelValue", event.detail.value);
 			setTimeout(() => {
 				// 头条小程序由于自身bug，导致中文下，每按下一个键(尚未完成输入)，都会触发一次@input，导致错误，这里进行判断处理
 				// #ifdef MP-TOUTIAO

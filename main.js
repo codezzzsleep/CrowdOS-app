@@ -22,6 +22,7 @@ Vue.use(uView);
 Vue.config.productionTip = false
 Vue.prototype.$tools = new Tools()
 Vue.prototype.$http = new HttpService()
+Vue.prototype.$baseURL = 'https://crowd.zzzsleep.icu/api';
 Vue.prototype.$session = Session
 Vue.prototype.Validate = Validate
 Vue.prototype.setData = setData

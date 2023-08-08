@@ -1,9 +1,6 @@
 <template>
 	<view class="container container23541">
-		<view class="version text-grey flex-direction-column flex diygw-col-24 justify-center align-center">
-			<view> DIY官网代码生成器生成 </view>
-			<view> http://www.diygw.com </view>
-		</view>
+		
 		<view class="clearfix"></view>
 	</view>
 </template>

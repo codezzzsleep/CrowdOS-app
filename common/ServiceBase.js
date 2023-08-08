@@ -198,7 +198,7 @@ class ServiceBase {
 		return {
 			// 'Accept': 'application/json', 
 			// 'Content-type': 'application/json', 
-			'Content-type': 'application/x-www-form-urlencoded'
+			'Content-Type': 'application/x-www-form-urlencoded'
 		}
 	}
 

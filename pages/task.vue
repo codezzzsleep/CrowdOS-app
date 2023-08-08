@@ -8,7 +8,7 @@
 						{{ item.title }}
 					</view>
 					<view class="diygw-text-line2 diygw-col-24 text2-clz"> {{ item.price }}元 </view>
-					<view class="flex flex-wrap diygw-col-24">
+					<view class="flex flex-wrap diygw-col-24" @tap="navigateTo" data-type="page" data-url="/pages/page/task/task">
 						<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex" class="diygw-col-0 text1-clz" :class="[tagIndex == 0 ? 'tag-bg' : '']">
 							{{ tagItem }}
 						</view>
@@ -36,10 +36,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="version text-grey flex-direction-column flex diygw-col-24 justify-center align-center">
-			<view> DIY官网代码生成器生成 </view>
-			<view> http://www.diygw.com </view>
-		</view>
+		
 		<view class="clearfix"></view>
 	</view>
 </template>
