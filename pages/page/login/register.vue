@@ -11,13 +11,13 @@
 					<u-input :focus="formData.userAccountFocus" class="" placeholder="请输入账号" v-model="form.userAccount" type="text"></u-input>
 				</view>
 			</u-form-item>
-			<u-form-item :borderBottom="false" v-if="globalData.logintype != '1'" class="diygw-col-24 userPassword-clz diygw-form-border" labelPosition="top" prop="userPassword">
+			<u-form-item :borderBottom="false" class="diygw-col-24 userPassword-clz diygw-form-border" labelPosition="top" prop="userPassword">
 				<view class="input solid">
 					<text class="diy-icon-lock margin-right-xs" style="color: #636363; font-size: 16px"></text>
 					<u-input :focus="formData.userPasswordFocus" class="" placeholder="请输入密码" v-model="form.userPassword" type="password" :password-icon="true"></u-input>
 				</view>
 			</u-form-item>
-			<u-form-item :borderBottom="false" v-if="globalData.logintype != '1'" class="diygw-col-24 checkPassword-clz diygw-form-border" labelPosition="top" prop="checkPassword">
+			<u-form-item :borderBottom="false"  class="diygw-col-24 checkPassword-clz diygw-form-border" labelPosition="top" prop="checkPassword">
 				<view class="input solid">
 					<text class="diy-icon-lock margin-right-xs" style="color: #636363; font-size: 16px"></text>
 					<u-input :focus="formData.checkPasswordFocus" class="" placeholder="请输入确认密码" v-model="form.checkPassword" type="password" :password-icon="true"></u-input>
